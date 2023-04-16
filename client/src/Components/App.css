@@ -1,0 +1,95 @@
+body {
+  background-color: #36454F;
+}
+
+#root {
+  max-width: 90%;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5%;
+}
+
+
+.App {
+  text-align: center;
+}
+
+.heading {
+  color: white;
+  font-size: 80px;
+}
+
+.home {
+  font-size: 30px;
+}
+
+.container {
+  
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: #fcc201;
+  background-color: royalblue;
+  margin: 10px;
+  width: 250px;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 5%;
+  padding: 10px;
+}
+
+.add-game-form {
+  margin: 10px;
+}
+
+.cards{
+  margin: 1rem;
+  box-shadow: 0 0 7px 0 #ddd;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 250px;
+  position: relative;
+  float: left;
+  height: 100%;
+  background-color: #C3B1E1;
+  color: black;
+  text-align: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.star-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+}
+
+.stars {
+  color: #fcc201;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.star-wrapper::before, .stars::before {
+  font-family: "FontAwesome";
+  content: "\f005 \0020 \f005 \0020 \f005 \0020 \f005 \0020 \f005";
+}
+
+.text-box {
+  margin: 5px;
+}
+
+.review-title{
+height: 15px;
+text-align: center;
+}
+
+.review-box{
+  text-align: center;
+}
+
+
