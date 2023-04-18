@@ -59,25 +59,6 @@ body {
   padding: 10px;
 }
 
-.star-wrapper {
-  position: relative;
-  display: inline-block;
-  padding-left: 20px;
-}
-
-.stars {
-  color: #fcc201;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.star-wrapper::before, .stars::before {
-  font-family: "FontAwesome";
-  content: "\f005 \0020 \f005 \0020 \f005 \0020 \f005 \0020 \f005";
-}
 
 .text-box {
   margin: 5px;
@@ -92,4 +73,12 @@ text-align: center;
   text-align: center;
 }
 
+.delete {
+  margin: 10px;
+  color: red;
+}
+
+.button {
+  margin: 5px;
+}
 

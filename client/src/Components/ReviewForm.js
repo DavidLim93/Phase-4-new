@@ -6,7 +6,7 @@ function ReviewForm({setReviews, onAddReview}) {
   const [reviewReview, setReviewReview] = useState('');
   const [reviewTitle, setReviewTitle] = useState('')
 
-
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,18 +33,18 @@ function ReviewForm({setReviews, onAddReview}) {
       return (
         <div className="review-form">
         <h3>Leave a Review</h3>
-        <form >
+        <form onSubmit={handleSubmit}>
           <div>
             <textarea
               className="review-title"
-              id="title"
+              // id="title"
               value={reviewTitle}
               placeholder="Review title"
               onChange={(e) => setReviewTitle(e.target.value)}
             ></textarea>
             <textarea
            className="review-box"
-              id="review"
+              // id="review"
               value={reviewReview}
               placeholder="Review comment"
               onChange={(e) => setReviewReview(e.target.value)}
@@ -53,7 +53,7 @@ function ReviewForm({setReviews, onAddReview}) {
               {/* {ratingOptions} */}
             </section>
           </div>
-          <button type="submit" onSubmit={handleSubmit}>Submit</button>
+          <button type="submit" >Submit</button>
         </form>
       </div>
       )

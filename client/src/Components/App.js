@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './Navbar'
 import GameContainer from './GameContainer';
-import GameCard from './GameCard';
+import Game from './Game';
 import Home from './Home';
 import Login from './Login';
 import Register from './Register';
@@ -18,12 +18,13 @@ import { BrowserRouter ,Route } from 'react-router-dom';
 
 
 
-function App({setGames, games}) {
+function App({setGames, games, onAddGame}) {
 
-  function  handleNewGame (newGame) {
-    const updatedGames = [...games, newGame];
-    setGames(updatedGames)
-  }
+
+
+  // function handleAddGame(newGame){
+  //   setGames([...games, newGame])
+  // }
 
 
   return (
@@ -33,7 +34,8 @@ function App({setGames, games}) {
         <h1 className="heading">Game Reviews</h1>
         {/* <Navbar /> */}
         <Home />
-        <AddGame onAddGame={handleNewGame} setGames={setGames} games={games}/>
+        
+        {/* <AddGame onAddGame={handleAddGame} setGames={setGames} games={games}/> */}
         <GameContainer />
       </div>  
 

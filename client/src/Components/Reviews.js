@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Rating from "./Rating";
-import UpdateReview from "./UpdateReview";
+
 
 function Reviews () {
 
@@ -19,10 +18,11 @@ function Reviews () {
         <div className="review">
       <h3>Reviews</h3>
       {reviews.map(review => (
-        <div key={review.game_id}>
+        <div key={review.id}>
           <p><strong>{review.title}</strong></p>
           <p>{review.description}</p>
-          <UpdateReview />
+          <button className="button">Edit</button>
+          <button className="button">Delete</button>
         </div>
       ))}
     </div>

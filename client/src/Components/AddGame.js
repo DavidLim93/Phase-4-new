@@ -1,21 +1,13 @@
 import React, {useState} from "react";
-import GameCard from "./GameCard";
+import Game from "./Game";
 
-function AddGame({setGames, games}) {
-    // const [formData, setFormData] = useState({
-    //     name: "",
-    //     image_url: "",
-    //   });
-
+function AddGame({onAddGame}) {
+   
+  
     const [name, setName] = useState("");
     const [image_url, setImage_url] = useState("")
 
-      // function handleChange(event) {
-      //   setFormData({
-      //     ...formData,
-      //     [event.target.name]: event.target.value,
-      //   });
-      // }
+     
 
       function handleSubmit(event) {
         event.preventDefault();
@@ -35,8 +27,8 @@ function AddGame({setGames, games}) {
         })
           .then((r) => r.json())
           .then((newGame) => {
-            setGames([...games, newGame],
-              console.log(setGames)
+            onAddGame(newGame
+              // console.log(setGames)
               )
           });
       }
