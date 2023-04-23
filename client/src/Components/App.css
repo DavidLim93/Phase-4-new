@@ -49,10 +49,11 @@ body {
   border-radius: 5px;
   border: 1px solid #ccc;
   width: 250px;
+  max-height: 100%;
   position: relative;
   float: left;
   height: 100%;
-  background-color: #C3B1E1;
+  background-color: #89CFF0;
   color: black;
   text-align: center;
   justify-content: center;
@@ -82,3 +83,24 @@ text-align: center;
   margin: 5px;
 }
 
+.review-text-box {
+  margin: 5px;
+}
+
+.review-title {
+  text-align: center;
+}
+
+.review-heading {
+  text-align: center;
+  justify-content: center;
+}
+
+.review-box {
+  padding-left: 0px;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+}

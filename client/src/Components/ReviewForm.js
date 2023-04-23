@@ -1,33 +1,43 @@
 import React, { useState } from "react";
-import Reviews from "./Reviews";
 
-function ReviewForm({setReviews, onAddReview}) {
+
+function ReviewForm({ onAddReview, game_id }) {
   
-  const [reviewReview, setReviewReview] = useState('');
-  const [reviewTitle, setReviewTitle] = useState('')
+  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState('');
+  // const [game_id, setGame_id] = useState('');
 
   
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const addReview = { review: {
-      "title": reviewTitle,
-      "review": reviewReview,
-    }};
+    // const addReview = {
+    //   // "game_id": game_id,
+    //   "title": title,
+    //   "review": review,
+    // };
 
    
+    const newReview = {
+      title,
+      description,
+      game_id: game_id
+    };
     fetch(`./reviews`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({addReview}),
+      body: JSON.stringify(newReview),
     })
-      .then((response) => response.json())
-      .then((newReview) => {
-        setReviews(onAddReview(...Reviews, newReview));
+      .then((r) => r.json())
+      .then((review) => {
+        console.log(review);
+        onAddReview(review);
       });
+    setTitle("");
+    setDescription("");
 
   }
       return (
@@ -38,20 +48,17 @@ function ReviewForm({setReviews, onAddReview}) {
             <textarea
               className="review-title"
               // id="title"
-              value={reviewTitle}
+              value={title}
               placeholder="Review title"
-              onChange={(e) => setReviewTitle(e.target.value)}
+              onChange={(e) => setTitle(e.target.value)}
             ></textarea>
             <textarea
            className="review-box"
               // id="review"
-              value={reviewReview}
+              value={description}
               placeholder="Review comment"
-              onChange={(e) => setReviewReview(e.target.value)}
+              onChange={(e) => setDescription(e.target.value)}
             ></textarea>
-            <section>
-              {/* {ratingOptions} */}
-            </section>
           </div>
           <button type="submit" >Submit</button>
         </form>

@@ -8,22 +8,22 @@
 games = Game.create([
     {
         name: "Diablo 3",
-        image_url: "https://www.pngwing.com/en/free-png-sqspr"
+        image_url: "https://upload.wikimedia.org/wikipedia/en/8/80/Diablo_III_cover.png"
     },
     
     {
         name: "Path of Exile",
-        image_url: "https://logos-world.net/path-of-exile-logo/"
+        image_url: "https://upload.wikimedia.org/wikipedia/en/0/08/Path_of_Exile_Logo.png"
     },
     
     {
         name: "Hogwarts Legacy",
-        image_url: "https://en.wikipedia.org/wiki/Hogwarts_Legacy#/media/File:Hogwarts-Legacy-cover.jpg"
+        image_url: "https://upload.wikimedia.org/wikipedia/en/7/7c/Hogwarts-Legacy-cover.jpg"
     },
     
     {
         name: "Pokemon Violet",
-        image_url: "https://en.wikipedia.org/wiki/Pok%C3%A9mon_Scarlet_and_Violet#/media/File:Pok%C3%A9mon_Scarlet_and_Violet_banner.png"
+        image_url: "https://upload.wikimedia.org/wikipedia/en/0/00/Pok%C3%A9mon_Scarlet_and_Violet_banner.png"
     }
     
     ])

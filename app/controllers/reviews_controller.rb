@@ -25,9 +25,10 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        game = find_game
-        review = Reviews.create(title: params[:name], description: params[:description], game_id: params[:game_id])
+        # byebug
+        review = Review.create(title: params[:title], description: params[:description], game_id: params[:game_id])
         render json: review, status: :created
+        
     end
 
     def update 
@@ -61,7 +62,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-        params.permit(:title, :description)
+        params.permit(:title, :description, :game_id)
     end
 
     def render_not_found_response(exception)

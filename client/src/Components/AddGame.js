@@ -27,9 +27,7 @@ function AddGame({onAddGame}) {
         })
           .then((r) => r.json())
           .then((newGame) => {
-            onAddGame(newGame
-              // console.log(setGames)
-              )
+            onAddGame(newGame)
           });
       }
     

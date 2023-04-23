@@ -19,15 +19,15 @@ class GamesController < ApplicationController
         render json: game, status: :created
     end
 
-    def update 
-        game = find_game
-        if game
-            game.update(game_params)
-            render json: game
-        else
-            render_not_found_response
-        end
-    end
+    # def update 
+    #     game = find_game
+    #     if game
+    #         game.update(game_params)
+    #         render json: game
+    #     else
+    #         render_not_found_response
+    #     end
+    # end
 
     def destroy
         game = find_game

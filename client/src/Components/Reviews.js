@@ -1,31 +1,88 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 
-function Reviews () {
+function Reviews ({id, title, description, reviews, onDeleteReview, onUpdateReview}) {
 
-    const [reviews, setReviews] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [updatedTitle, setUpdatedTitle] = useState(title);
+  const [updatedDescription, setUpdatedDescription] = useState(description);
+  
+
+
+  function handleDeleteReviewClick() {
+    fetch(`./reviews/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+     }})
+      .then((r) => r.json())
+      .then(() => {
+        onDeleteReview(reviews);
+        // console.log(reviews)
+    });
+  }
+
+  function handleUpdateReview() {
+
+    const updatedReview = {
+      title: updatedTitle,
+      description: updatedDescription,
+    };
     
-    useEffect (() => {
-        fetch("./reviews")
-        .then((r) => r.json())
-        .then((reviews) => {
-          console.log(reviews)
-          setReviews(reviews)
-        })
-      }, [])
+   fetch(`./reviews/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({updatedReview}),
+    })
+      .then((r) => r.json())
+      .then((patchedReview) => {
+        onUpdateReview(patchedReview);
+        setIsEditing(false);
+      })
+  }
+
+  function handleEditClick() {
+    setIsEditing(true); 
+  }
+
+  function handleTitleChange(e) {
+    setUpdatedTitle(e.target.value);
+  }
+
+  function handleDescriptionChange(e) {
+    setUpdatedDescription(e.target.value);
+  }
+
+  if (isEditing) {
+    return (
+      <div className="review-text">
+        <input className="review-title" type="text" value={updatedTitle} onChange={handleTitleChange} />
+        <textarea className="review-text-box" value={updatedDescription} onChange={handleDescriptionChange} />
+       <br></br>
+        <button className="button" onClick={handleUpdateReview}>
+          Save
+        </button>
+      </div>
+    );
+  }
 
     return (
         <div className="review">
-      <h3>Reviews</h3>
-      {reviews.map(review => (
-        <div key={review.id}>
-          <p><strong>{review.title}</strong></p>
-          <p>{review.description}</p>
-          <button className="button">Edit</button>
-          <button className="button">Delete</button>
+        <div key={id}>
+          <p>
+            <strong>{title}</strong>
+          </p>
+          <p>{description}</p>
+          <button className="button" onClick={handleEditClick}>
+            Edit
+          </button>
+          <button className="button" onClick={handleDeleteReviewClick}>
+            Delete
+          </button>
         </div>
-      ))}
-    </div>
+      </div>
     )
 
 }

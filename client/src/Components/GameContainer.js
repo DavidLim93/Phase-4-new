@@ -7,11 +7,13 @@ function GameContainer({onAddGame}) {
 
   const [games, setGames] = useState([])
 
+
+
     useEffect (() => {
       fetch("./games")
       .then((r) => r.json())
       .then((games) => {
-        console.log(games)
+        // console.log(games)
         setGames(games)
       })
     }, [])
@@ -21,9 +23,12 @@ function GameContainer({onAddGame}) {
     }
 
     function handleDeleteGame(deletedGame) {
+      
       const updatedGames = games.filter((game) => game.id !== deletedGame.id);
       setGames(updatedGames);
     }
+
+    
     
 
     return (
@@ -32,8 +37,10 @@ function GameContainer({onAddGame}) {
           <ul>
           {
             games.map((game) => {
+              // {console.log(game.reviews[0].game_id)}
                 return <Game
                 key={game.id}
+                id={game.reviews[0]?.game_id}
                 name={game.name}
                 image_url={game.image_url}
                 onDeleteGame={handleDeleteGame}
