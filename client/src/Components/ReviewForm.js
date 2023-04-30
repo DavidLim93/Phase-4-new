@@ -24,6 +24,8 @@ function ReviewForm({ onAddReview, game_id }) {
       description,
       game_id: game_id
     };
+    console.log(newReview);
+
     fetch(`./reviews`, {
       method: "POST",
       headers: {
@@ -32,12 +34,12 @@ function ReviewForm({ onAddReview, game_id }) {
       body: JSON.stringify(newReview),
     })
       .then((r) => r.json())
-      .then((review) => {
-        console.log(review);
-        onAddReview(review);
+      .then((newReview) => {
+        
+        onAddReview(newReview);
       });
-    setTitle("");
-    setDescription("");
+    // setTitle("");
+    // setDescription("");
 
   }
       return (

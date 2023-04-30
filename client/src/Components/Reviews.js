@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 
-function Reviews ({id, title, description, reviews, onDeleteReview, onUpdateReview}) {
+function Reviews ({id, title, description, reviews, onDeleteReview, onUpdateReview, review}) {
 
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState(title);
@@ -10,7 +10,7 @@ function Reviews ({id, title, description, reviews, onDeleteReview, onUpdateRevi
 
 
   function handleDeleteReviewClick() {
-    fetch(`./reviews/${id}`, {
+    fetch(`./reviews/${review.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ function Reviews ({id, title, description, reviews, onDeleteReview, onUpdateRevi
 
     return (
         <div className="review">
-        <div key={id}>
+        <div >
           <p>
             <strong>{title}</strong>
           </p>
@@ -78,7 +78,7 @@ function Reviews ({id, title, description, reviews, onDeleteReview, onUpdateRevi
           <button className="button" onClick={handleEditClick}>
             Edit
           </button>
-          <button className="button" onClick={handleDeleteReviewClick}>
+          <button className="button" onClick={handleDeleteReviewClick} game_id={id}>
             Delete
           </button>
         </div>

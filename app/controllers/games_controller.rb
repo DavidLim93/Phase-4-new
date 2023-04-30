@@ -34,6 +34,7 @@ class GamesController < ApplicationController
         if game
             game.destroy
             head :no_content
+            render json: {}
         else
             render_not_found_response
         end

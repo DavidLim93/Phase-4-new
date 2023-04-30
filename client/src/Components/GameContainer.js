@@ -3,7 +3,7 @@ import Game from "./Game";
 import AddGame from "./AddGame";
 
 
-function GameContainer({onAddGame}) {
+function GameContainer({ reviews, setReviews}) {
 
   const [games, setGames] = useState([])
 
@@ -40,10 +40,12 @@ function GameContainer({onAddGame}) {
               // {console.log(game.reviews[0].game_id)}
                 return <Game
                 key={game.id}
-                id={game.reviews[0]?.game_id}
+                id={game.reviews[0]?.game_id ?? game.id}
                 name={game.name}
                 image_url={game.image_url}
                 onDeleteGame={handleDeleteGame}
+                reviews={reviews}
+                setReviews={setReviews}
                     />
         })}
           </ul>

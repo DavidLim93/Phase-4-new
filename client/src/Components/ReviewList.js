@@ -2,7 +2,9 @@ import React, {useState, useEffect} from "react";
 import Reviews from "./Reviews";
 
 
-function ReviewList ({game_id, onAddReview}) {
+function ReviewList ({id, game_id, onAddReview}) {
+
+  // console.log(id)
 
     const [reviews, setReviews] = useState([]);
     // const [game_id, setGame_id]= useState("")
@@ -19,8 +21,10 @@ function ReviewList ({game_id, onAddReview}) {
 
       function handleDeleteReview(removedReview) {
       
-        const deletedReview = reviews.filter((review) => review.id !== removedReview.id);
-        setReviews(deletedReview);
+        if (removedReview && removedReview.id) {
+          const deletedReview = reviews.filter((review) => review.id !== removedReview.id);
+          setReviews(deletedReview);
+        }
       }
 
      
@@ -52,11 +56,13 @@ function ReviewList ({game_id, onAddReview}) {
             {reviews.filter(review => review.game_id === game_id).map(review => {
         return <Reviews
         key={review.id}
+        // id={game_id}
         title={review.title}
         description={review.description}
-        
         onDeleteReview={handleDeleteReview}
         onUpdateReview={handleUpdateReview}
+        reviews={reviews}
+        setReviews={setReviews}
         />
       })}
             </ul>

@@ -20,13 +20,14 @@ function Game ({onDeleteGame, name, image_url, id, games, game, reviews, setRevi
           .then((r) => r.json())
           .then(() => {
             console.log("Deleting game:", id);
-            if (game) {
-              onDeleteGame(game);
-            }    
-          })}};
+            onDeleteGame(game);
+            }   
+          )}};
 
       function handleAddReview(newReview){
+        // console.log(reviews)
         setReviews([...reviews, newReview])
+        console.log(reviews)
       }
 
       function handleAddReviewClick() {
@@ -40,19 +41,19 @@ function Game ({onDeleteGame, name, image_url, id, games, game, reviews, setRevi
     return (
         <div className="cards">
             <h3>{name}</h3>
-            <img className="image" alt="No Image Available" src={image_url}></img>
+            <img className="image" alt="Not Available" src={image_url}></img>
             <br></br>
             {/* {console.log(id)} */}
             <ReviewList game_id={id} />
-            <button className="button" onClick={handleAddReviewClick} onAddReview={handleAddReview}>Add Review</button>
+            <button className="button" onClick={handleAddReviewClick}>Add Review</button>
             {showForm && (
               <>
-                <ReviewForm  onAddReview={handleAddReview} game_id={game?.id}/>
+                <ReviewForm  onAddReview={handleAddReview} game_id={id}/>
                 <button className="button" onClick={handleCancelAddReview}>Cancel</button>
               </>
             )}
             <br></br>
-             <button className="delete" onClick={handleDeleteClick}>Delete Game</button>
+             <button className="delete" onClick={handleDeleteClick} >Delete Game</button>
         </div>
         
     )

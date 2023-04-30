@@ -45,7 +45,7 @@ class ReviewsController < ApplicationController
         review = find_review
         if review
             review.destroy
-            head :no_content
+            head :no_content 
         else
             render_not_found_response
         end
@@ -65,8 +65,8 @@ class ReviewsController < ApplicationController
         params.permit(:title, :description, :game_id)
     end
 
-    def render_not_found_response(exception)
-        render json: { error: "#{exception.model} not found" }, status: :not_found
+    def render_not_found_response()
+        render json: { error: "Review not found" }, status: :not_found
     end
 
 end
