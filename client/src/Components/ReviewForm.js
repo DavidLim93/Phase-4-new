@@ -41,6 +41,8 @@ function ReviewForm({  game_id }) {
     };
     // console.log(newReview);
 
+
+
     fetch(`./reviews`, {
       method: "POST",
       headers: {
@@ -52,7 +54,8 @@ function ReviewForm({  game_id }) {
       .then(() => {
         console.log(newReview)
         // fetchData();
-        setReviews( reviews => [newReview, ...reviews])
+        var review1 = [ ...reviews, newReview]
+        setReviews(review1)
         console.log(reviews)
       });
  
