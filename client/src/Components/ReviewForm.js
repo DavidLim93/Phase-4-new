@@ -1,30 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
-function ReviewForm({ onAddReview, game_id }) {
+function ReviewForm({  game_id }) {
   
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
   // const [game_id, setGame_id] = useState('');
+  const [reviews, setReviews] = useState([])
 
-  
+  function fetchData(){
+     fetch(`./reviews`)
+    .then((r) => r.json())
+    .then((review) => {
+      // console.log(review)
+      setReviews(review)
+    })
+  }
+
+
+  useEffect (() => {
+    fetchData()
+  }, [])
+
+
+  function handleAddReview(newReview){
+
+    console.log(reviews)
+    setReviews([...reviews, newReview])
+    console.log(newReview)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const addReview = {
-    //   // "game_id": game_id,
-    //   "title": title,
-    //   "review": review,
-    // };
-
-   
     const newReview = {
       title,
       description,
       game_id: game_id
+ 
     };
-    console.log(newReview);
+    // console.log(newReview);
 
     fetch(`./reviews`, {
       method: "POST",
@@ -34,12 +49,14 @@ function ReviewForm({ onAddReview, game_id }) {
       body: JSON.stringify(newReview),
     })
       .then((r) => r.json())
-      .then((newReview) => {
-        
-        onAddReview(newReview);
+      .then(() => {
+        console.log(newReview)
+        // fetchData();
+        setReviews( reviews => [newReview, ...reviews])
+        console.log(reviews)
       });
-    // setTitle("");
-    // setDescription("");
+ 
+      
 
   }
       return (

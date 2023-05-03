@@ -23,7 +23,7 @@ function GameContainer({ reviews, setReviews}) {
     }
 
     function handleDeleteGame(deletedGame) {
-      
+      if (!deletedGame) return;
       const updatedGames = games.filter((game) => game.id !== deletedGame.id);
       setGames(updatedGames);
     }
@@ -44,8 +44,8 @@ function GameContainer({ reviews, setReviews}) {
                 name={game.name}
                 image_url={game.image_url}
                 onDeleteGame={handleDeleteGame}
-                reviews={reviews}
-                setReviews={setReviews}
+                // reviews={reviews}
+                // setReviews={setReviews}
                     />
         })}
           </ul>

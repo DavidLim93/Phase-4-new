@@ -19,16 +19,17 @@ function Game ({onDeleteGame, name, image_url, id, games, game, reviews, setRevi
         })
           .then((r) => r.json())
           .then(() => {
-            console.log("Deleting game:", id);
+            console.log("Deleting game:", game);
             onDeleteGame(game);
             }   
           )}};
 
-      function handleAddReview(newReview){
-        // console.log(reviews)
-        setReviews([...reviews, newReview])
-        console.log(reviews)
-      }
+      // function handleAddReview(newReview){
+      //   console.log(reviews)
+      //   console.log(newReview)
+      //   setReviews([...reviews, newReview])
+        
+      // }
 
       function handleAddReviewClick() {
         setShowForm(true);
@@ -48,7 +49,7 @@ function Game ({onDeleteGame, name, image_url, id, games, game, reviews, setRevi
             <button className="button" onClick={handleAddReviewClick}>Add Review</button>
             {showForm && (
               <>
-                <ReviewForm  onAddReview={handleAddReview} game_id={id}/>
+                <ReviewForm  game_id={id}/>
                 <button className="button" onClick={handleCancelAddReview}>Cancel</button>
               </>
             )}

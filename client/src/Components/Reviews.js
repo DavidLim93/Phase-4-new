@@ -10,7 +10,7 @@ function Reviews ({id, title, description, reviews, onDeleteReview, onUpdateRevi
 
 
   function handleDeleteReviewClick() {
-    fetch(`./reviews/${review.id}`, {
+    fetch(`./reviews/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function Reviews ({id, title, description, reviews, onDeleteReview, onUpdateRevi
           <button className="button" onClick={handleEditClick}>
             Edit
           </button>
-          <button className="button" onClick={handleDeleteReviewClick} game_id={id}>
+          <button className="button" onClick={handleDeleteReviewClick} >
             Delete
           </button>
         </div>

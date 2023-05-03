@@ -2,12 +2,12 @@ import React, {useState, useEffect} from "react";
 import Reviews from "./Reviews";
 
 
-function ReviewList ({id, game_id, onAddReview}) {
+function ReviewList ({game_id}) {
 
-  // console.log(id)
+
 
     const [reviews, setReviews] = useState([]);
-    // const [game_id, setGame_id]= useState("")
+   
     
     useEffect (() => {
         fetch(`./reviews`)
@@ -26,6 +26,12 @@ function ReviewList ({id, game_id, onAddReview}) {
           setReviews(deletedReview);
         }
       }
+
+      // function handleAddReview(newReview){
+      //   console.log(reviews)
+      //   setReviews([...reviews, newReview])
+      //   // console.log(newReviews)
+      // }
 
      
 
@@ -63,6 +69,8 @@ function ReviewList ({id, game_id, onAddReview}) {
         onUpdateReview={handleUpdateReview}
         reviews={reviews}
         setReviews={setReviews}
+        // onAddReview={handleAddReview}
+        id={review.id}
         />
       })}
             </ul>
