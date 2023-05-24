@@ -23,7 +23,7 @@ function GameContainer({ reviews, setReviews}) {
     }
 
     function handleDeleteGame(deletedGame) {
-      if (!deletedGame) return;
+      
       const updatedGames = games.filter((game) => game.id !== deletedGame.id);
       setGames(updatedGames);
     }

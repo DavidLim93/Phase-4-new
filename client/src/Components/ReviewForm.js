@@ -23,12 +23,12 @@ function ReviewForm({  game_id }) {
   }, [])
 
 
-  function handleAddReview(newReview){
+  // function handleAddReview(newReview){
 
-    console.log(reviews)
-    setReviews([...reviews, newReview])
-    console.log(newReview)
-  }
+  //   console.log(reviews)
+  //   setReviews([...reviews, newReview])
+  //   console.log(newReview)
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,6 +84,7 @@ function ReviewForm({  game_id }) {
           </div>
           <button type="submit" >Submit</button>
         </form>
+        {/* {console.log(game_id)}  */}
       </div>
       )
 

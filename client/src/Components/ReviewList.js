@@ -55,7 +55,7 @@ function ReviewList ({game_id}) {
 
     return (
         <div >
-            {/* {console.log(props.game_id)} */}
+            {/* {console.log(game_id)} */}
             {/* {console.log(review.game_id)} */}
             <h3 className="review-heading">Reviews</h3>
             <ul className="review-box">
